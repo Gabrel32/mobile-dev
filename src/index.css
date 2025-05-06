@@ -1,42 +1,26 @@
-/*
-  Base Styles (from your initial CSS)
-  ------------------------------------
-*/
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.6; /* Adjusted slightly for readability */
+  line-height: 1.6;
   font-weight: 400;
 
-  /*
-    Color Palette Option 1: Professional/Techy Blues (Uncomment and use one option)
-    ------------------------------------------------------------------------------
-  */
-  --color-primary: #0077CC;       /* Main Brand Blue */
-  --color-accent: #00C1B0;        /* Secondary/Accent Color */
-  --color-text-dark: #333333;     /* Dark text for light backgrounds */
-  --color-text-light: #FFFFFF;    /* Light text for dark backgrounds */
-  --color-background-dark: #333333; /* Dark section background */
-  --color-background-light: #F4F4F4; /* Light section background */
-  --color-link: #646cff;          /* Default link color */
-  --color-link-hover: #535bf2;    /* Default link hover color */
 
-  /*
-    Color Palette Option 2: Modern/Clean Navy (Uncomment and use one option)
-    ------------------------------------------------------------------------
-  */
-  /*
-  --color-primary: #0A192F;
-  --color-accent: #FFA500;
-  --color-text-dark: #333333;
-  --color-text-light: #FFFFFF;
-  --color-background-dark: #0A192F;
-  --color-background-light: #E0E0E0;
-  --color-link: #646cff;
-  --color-link-hover: #535bf2;
-  */
+  --color-primary: #0066CC; 
+  --color-secondary-blue: #0077be;
+  --color-light-blue: #a2d5f2;   
+
+  --color-text-dark: #0066CC;   
+  --color-text-light: #FFFFFF; 
+
+  --color-background-light: #FFFFFF; 
+  --color-background-medium: #F8F8F8; 
+  --color-background-dark: #F8F8F8; 
+
+  --color-link: var(--color-primary); 
+  --color-link-hover: var(--color-secondary-blue); 
 
 
-  /* Apply default colors */
+  /* Aplicar colores predeterminados CLAROS */
   color: var(--color-text-dark);
   background-color: var(--color-background-light);
 
@@ -47,55 +31,44 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-  :root {
-    color: rgba(255, 255, 255, 0.87); /* Keep default dark mode text color */
-    background-color: #242424;      /* Keep default dark mode background */
-
-    /* Adjust variable usage for dark mode if needed */
-    --color-text-dark: rgba(255, 255, 255, 0.87); /* Dark text is light in dark mode */
-    --color-text-light: #242424;    /* Light text is dark in dark mode */
-    --color-background-dark: #1a1a1a; /* Use a darker background for dark sections in dark mode */
-    --color-background-light: #242424; /* Use the general background for light sections */
-
-    /* Link colors might need adjustment */
-    --color-link: #646cff;
-    --color-link-hover: #747bff;
-  }
+html {
+    scroll-behavior: smooth;
 }
-
 
 body {
   margin: 0;
-  /* Remove default flex/center from body for section stacking */
-  /* display: flex; */
-  /* place-items: center; */
   min-width: 320px;
-  /* min-height: 100vh; */ /* Remove this if sections are taller than viewport */
-  overflow-x: hidden; /* Prevent horizontal scroll caused by padding/margins sometimes */
-  line-height: 1.6; /* Ensure body text uses the correct line height */
-  -webkit-font-smoothing: antialiased; /* Ensure antialiasing is applied */
-  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-osx-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    line-height: 1.2; /* Tighter line height for headings */
-    margin-top: 0; /* Remove default top margin */
-    margin-bottom: 0.5em; /* Add bottom margin */
-    color: var(--color-text-dark); /* Default heading color */
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    color: var(--color-primary); /* Headings in primary blue */
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
 }
 
-h1 { font-size: 3.2em; }
+h1 {
+    font-size: 3.2em;
+    font-weight: bold;
+}
+h2 { font-size: 2.5em; }
+h3 { font-size: 1.8em; }
 
 
 a {
   font-weight: 500;
-  color: var(--color-link);
-  text-decoration: inherit;
+  color: var(--color-link); /* Links use link color variable */
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 a:hover {
-  color: var(--color-link-hover);
+  color: var(--color-link-hover); /* Link hover uses hover color variable */
 }
 
 /* Reset default button styles */
@@ -113,26 +86,29 @@ button {
   ------------------------------------
 */
 .container {
-  max-width: 1200px; /* Or your preferred max width */
-  margin: 0 auto; /* Center the container */
-  padding: 0 20px; /* Add horizontal padding */
+  max-width: 900px;
+  margin: 0 auto;
+  /* padding: 0 10px; */
 }
 
-/* Basic vertical padding for all sections */
 section {
     padding: 60px 0;
 }
 
-/* Alternating section background colors (example) */
-/* Apply these classes to your <section> elements */
+/* Alternating section background colors for a light theme */
 .section-light {
-    background-color: var(--color-background-light);
-    color: var(--color-text-dark);
+    background-color: var(--color-background-light); /* White background */
+    color: var(--color-text-dark); /* Dark text */
+}
+
+.section-medium {
+    background-color: var(--color-background-medium); /* Very light grey background */
+    color: var(--color-text-dark); /* Dark text */
 }
 
 .section-dark {
-    background-color: var(--color-background-dark);
-    color: var(--color-text-light);
+    background-color: var(--color-background-dark); /* Dark background - for footer, etc. */
+    color: var(--color-text-light); /* White text */
 }
 /* Ensure headings in dark sections are light */
 .section-dark h1,
@@ -141,44 +117,47 @@ section {
 .section-dark h4,
 .section-dark h5,
 .section-dark h6 {
-    color: var(--color-text-light);
+    color: var(--color-text-light); /* Headings in dark section are white */
 }
 
 
 /*
-  Button Styles (using .cta-button class on links or buttons)
-  -------------------------------------------------------------
+  Button Styles
+  ------------------------------------
 */
 .cta-button {
   border-radius: 8px;
-  border: none; /* Use background/padding instead of border */
-  padding: 0.8em 1.5em; /* Slightly more padding */
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
+  border: none;
+  padding: 1em 2em;
+  font-size: 1.1em;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: background-color 0.25s ease, opacity 0.25s ease, border-color 0.25s ease, color 0.25s ease; /* Smooth transitions for all relevant properties */
-  text-decoration: none; /* Remove underline from cta-button links */
-  display: inline-block; /* Allows padding and margin */
-  margin: 5px; /* Add a small margin between buttons */
+  transition: background-color 0.3s ease, opacity 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  margin: 10px;
 }
 
-/* Primary button style */
+/* Primary button style - Primary blue background, white text */
 .cta-button.primary {
   background-color: var(--color-primary);
   color: var(--color-text-light);
+  border: 2px solid var(--color-primary);
 }
 
 .cta-button.primary:hover {
-  /* Simple hover effect - consider using HSL for easier darkening/lightening if not using preprocessor */
-  opacity: 0.9;
+  background-color: var(--color-secondary-blue);
+  border-color: var(--color-secondary-blue);
+  opacity: 1;
 }
 
-/* Secondary button style */
+/* Secondary button style - White/transparent background, primary blue text/border */
 .cta-button.secondary {
     background-color: transparent;
     color: var(--color-primary);
-    border: 1px solid var(--color-primary);
+    border: 2px solid var(--color-primary);
 }
 
 .cta-button.secondary:hover {
@@ -187,24 +166,22 @@ section {
 }
 
 
+/*
+  Component/Section Specific Styles (Ajustados para tema CLARO)
+  -------------------------------------------------------------
+*/
 
 /* Header */
 .header {
-    background-color: rgba(255, 255, 255, 0.95); /* Example semi-transparent white */
-    padding: 5px 0;
-    position: sticky; /* Make it sticky */
-    top: 0; /* Stick to the top */
-    z-index: 1000; /* Ensure it's above other content */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional subtle shadow */
+    background:var(--color-background-light); /* White with slight transparency */
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); */
 }
 
-/* Adjust for dark mode */
-@media (prefers-color-scheme: dark) {
-    .header {
-        background-color: rgba(36, 36, 36, 0.95);
-        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
-}
+
 
 
 .header .container {
@@ -214,11 +191,19 @@ section {
 }
 
 .header .logo a {
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: bold;
-    color: var(--color-text-dark); /* Logo color */
+    color: var(--color-primary); /* Logo text in primary blue */
     text-decoration: none;
+    text-transform: uppercase;
 }
+
+/* If using the logo image */
+.header .logo img {
+    height: 100px;
+    width: auto;
+}
+
 
 .header .nav ul {
     list-style: none;
@@ -228,41 +213,44 @@ section {
 }
 
 .header .nav li {
-    margin-left: 20px;
+    margin-left: 25px;
 }
 
 .header .nav a {
-    color: var(--color-text-dark); /* Nav link color */
+    color: var(--color-text-dark); /* Nav links in dark text */
     text-decoration: none;
     transition: color 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
 }
 
 .header .nav a:hover {
-    color: var(--color-primary); /* Nav link hover color */
+    color: var(--color-primary); /* Primary blue on hover */
 }
 
-/* Hide nav on small screens and show a hamburger icon if needed */
-/* Add media query here */
+
+/* Hide nav on small screens */
 @media (max-width: 768px) {
     .header .nav {
-        display: none; /* Hide nav by default on small screens */
+        display: none;
     }
-    /* Add styles for a hamburger menu icon here */
 }
 
 
-/* Hero Section */
+/* Hero Section - Can keep background image, ensure text contrasts */
 .hero {
-    background: url('/images/hero-background.jpg') center center/cover no-repeat; /* Replace with your image */
-    color: var(--color-text-light); /* Hero text color should contrast background */
+    background: url('/images/hero-background.jpg') center center/cover no-repeat; /* Keep your image */
+    color: var(--color-text-light); /* Ensure text is light against the image overlay */
     text-align: center;
     display: flex;
     align-items: center;
-    min-height: 100vh; /* Make hero cover the full viewport height */
-    position: relative; /* Needed for overlay */
+    min-height: 100vh;
+    position: relative;
+    padding: 0 20px;
 }
 
-/* Optional: Add an overlay for better text readability */
+/* Add a stronger dark overlay for text readability on any image */
 .hero::before {
     content: '';
     position: absolute;
@@ -270,278 +258,328 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
-    z-index: 1; /* Below content */
+    background-color: var(--color-background-dark); /* Stronger dark overlay */
+    z-index: 1;
 }
 
 .hero .container {
-    position: relative; /* Bring container content above overlay */
+    position: relative;
     z-index: 2;
+    margin: 0 auto;
+    max-width: 900px;
 }
 
 
 .hero h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
-    color: var(--color-text-light); /* Ensure heading is light */
+    font-size: 4em;
+    margin-bottom: 20px;
+    color: var(--color-secondary-blue); /* White heading against dark overlay */
+    text-transform: none; /* Hero headline doesn't need to be uppercase */
+    line-height: 1.1;
 }
 
 .hero p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
+    font-size: 1.3em;
+    margin-bottom: 40px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for body text */
 }
 
 .hero-buttons .cta-button {
-    margin: 10px; /* Space between buttons */
+    margin: 10px;
 }
 
 /* Adjust font sizes and padding for small screens */
-/* Add media query here */
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 2em;
+        font-size: 2.5em;
     }
     .hero p {
-        font-size: 1em;
+        font-size: 1.1em;
     }
     .hero {
-        min-height: 80vh; /* Shorter height on small screens */
+        min-height: 80vh;
     }
 }
 
 
-/* Services Section */
+/* Services Section - Light background */
+.services {
+    background-color: var(--color-background-light); /* White background */
+    color: var(--color-text-dark);
+}
+
+.services h2 {
+     color: var(--color-primary); /* Heading in primary blue */
+     text-align: center;
+     margin-bottom: 40px;
+}
+
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
-    gap: 30px; /* Space between grid items */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
     margin-top: 40px;
 }
 
 .service-item {
-    background-color: #fff; /* White background for service cards */
-    padding: 30px;
+    background-color: #fff; /* White background for cards */
+    padding: 40px;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-@media (prefers-color-scheme: dark) {
-    .service-item {
-        background-color: #1a1a1a; /* Darker background in dark mode */
-        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    }
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border-top: 5px solid transparent; /* Optional: border top accent */
 }
 
 .service-item:hover {
-    transform: translateY(-10px); /* Lift card on hover */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    border-top-color: var(--color-primary); /* Show primary color on hover */
 }
 
 .service-icon {
-    font-size: 3em; /* Adjust icon size */
-    margin-bottom: 15px;
-    color: var(--color-primary); /* Icon color */
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    color: var(--color-accent); /* Use accent color for icons */
 }
 
 .service-item h3 {
     margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--color-primary); /* Service item headings in primary blue */
+}
+.service-item p {
+    font-size: 1em;
+    line-height: 1.5;
+     color: #555; /* Slightly lighter dark text */
 }
 
 
-/* Portfolio Section */
+
+/* Portfolio Section - Use a slightly different light background */
 .portfolio {
-    background-color: var(--color-background-dark); /* Example: Dark background for portfolio */
-    color: var(--color-text-light);
+    background-color: var(--color-background-medium); /* Light grey background */
+    color: var(--color-text-dark);
 }
 
 .portfolio h2 {
-    color: var(--color-text-light); /* Ensure heading is light */
+    color: var(--color-primary); /* Heading in primary blue */
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
 }
 
 .project-item {
-    background-color: var(--color-text-light); /* White background for project cards */
+    background-color: var(--color-background-light); /* White background for project cards */
     border-radius: 8px;
-    overflow: hidden; /* Hide parts of image outside border-radius */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex; /* Use flex to structure image and info */
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
     flex-direction: column;
+    border: 2px solid var(--color-background-medium); /* Subtle border */
 }
-@media (prefers-color-scheme: dark) {
-    .project-item {
-         background-color: #1a1a1a; /* Darker background in dark mode */
-         box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    }
-     .project-item .project-info h3,
-     .project-item .project-info p {
-         color: var(--color-text-dark); /* Ensure text in info is readable on dark background */
-     }
-}
+
 
 
 .project-item:hover {
-     transform: translateY(-10px); /* Lift card on hover */
-     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+     transform: translateY(-10px);
+     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+     border-color: var(--color-primary); /* Highlight border on hover */
 }
 
 
 .project-item img {
     width: 100%;
-    height: 200px; /* Fixed height for consistency, adjust as needed */
-    object-fit: cover; /* Cover the area without distorting aspect ratio */
+    height: 250px;
+    object-fit: cover;
 }
 
 .project-item .project-info {
-    padding: 20px;
-    flex-grow: 1; /* Allow info to take up remaining space */
+    padding: 25px;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
 .project-item .project-info h3 {
-    margin-bottom: 5px;
-    color: var(--color-text-dark); /* Project title color */
+    margin-bottom: 10px;
+    color: var(--color-primary); /* Project title in primary blue */
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .project-item .project-info p {
-    font-size: 0.95em;
-    color: #555; /* Slightly lighter text for description */
-    margin-bottom: 15px;
-    flex-grow: 1; /* Allow description to push 'Ver más' down */
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    line-height: 1.5;
 }
 
-@media (prefers-color-scheme: dark) {
-    .project-item .project-info p {
-        color: #bbb; /* Adjust for dark mode readability */
-    }
-}
+
 
 .project-item .project-info a {
     color: var(--color-primary);
     text-decoration: none;
     font-weight: bold;
-    align-self: flex-start; /* Align link to the left */
+    align-self: flex-start;
+    text-transform: uppercase;
+    font-size: 0.9em;
 }
 
 
-/* About Us Section */
+/* About Us Section - Alternating light/medium background */
+.about {
+    background-color: var(--color-background-light); /* White background */
+    color: var(--color-text-dark);
+}
+
 .about-content {
     display: flex;
-    gap: 40px; /* Space between text and image */
-    align-items: center; /* Vertically align items */
+    gap: 60px;
+    align-items: center;
 }
 
 /* Adjust layout for small screens */
-/* Add media query here */
 @media (max-width: 768px) {
     .about-content {
-        flex-direction: column; /* Stack items vertically */
+        flex-direction: column;
+        gap: 30px;
     }
     .about-image {
-        width: 100%; /* Image takes full width */
-        max-width: 400px; /* Limit max width */
+        width: 100%;
+        max-width: 400px;
     }
 }
 
 
 .about-text {
-    flex: 1; /* Allow text to take up available space */
+    flex: 1;
 }
+
+.about-text h2 {
+    text-align: center;
+    margin-bottom: 30px;
+     color: var(--color-primary); /* Heading in primary blue */
+}
+
+@media (min-width: 769px) {
+     .about-text h2 {
+         text-align: left;
+     }
+}
+
 
 .about-image img {
     max-width: 100%;
     height: auto;
-    border-radius: 8px; /* Optional: rounded corners for image */
+    border-radius: 8px;
+    border: 3px solid var(--color-primary); /* Primary blue border */
 }
 
 
-/* Process Section */
+/* Process Section - Use medium background */
+.process {
+     background-color: var(--color-background-medium); /* Light grey background */
+     color: var(--color-text-dark);
+}
+
+.process h2 {
+    color: var(--color-primary); /* Heading in primary blue */
+     text-align: center;
+     margin-bottom: 50px;
+}
+
 .process-steps {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid for steps */
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
     margin-top: 40px;
 }
 
 .step-item {
     text-align: center;
-    padding: 20px;
-    /* Optional: Add a subtle border or background */
-    /* border: 1px solid #eee; */
-    /* background-color: #fff; */
+    padding: 30px;
     border-radius: 8px;
+    background-color: var(--color-background-light); /* White background for steps */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-bottom: 4px solid var(--color-light-blue); /* Light blue bottom border */
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
-/* Adjust for dark mode if background is added */
+
+
+.step-item:hover {
+    border-bottom-color: var(--color-primary); /* Primary blue on hover */
+}
 
 
 .step-icon {
-    font-size: 2.5em; /* Adjust icon size */
-    margin-bottom: 10px;
-    color: var(--color-accent); /* Use accent color for icons */
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: var(--color-primary); /* Icons in primary blue */
 }
 
 .step-item h3 {
-    margin-bottom: 5px;
-    font-size: 1.1em;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--color-primary); /* Step headings in primary blue */
+}
+.step-item p {
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #555;
 }
 
 
-/* Testimonials Section */
+
+/* Testimonials Section - Use light background */
 .testimonials {
-    background-color: var(--color-background-dark); /* Example: Dark background */
-    color: var(--color-text-light);
+    background-color: var(--color-background-light); /* White background */
+    color: var(--color-text-dark);
     text-align: center;
 }
 
 .testimonials h2 {
-    color: var(--color-text-light); /* Ensure heading is light */
-    margin-bottom: 40px;
+    color: var(--color-primary); /* Heading in primary blue */
+    margin-bottom: 50px;
 }
 
 .testimonials-list {
-    /* Styles for your slider or grid */
-    display: grid; /* Simple grid for example */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
 }
 
 .testimonial-item {
-    background-color: #fff; /* White background for testimonial cards */
+    background-color: var(--color-background-medium); /* Light grey background for cards */
     color: var(--color-text-dark);
     padding: 30px;
     border-radius: 8px;
     text-align: left;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     font-style: italic;
+    border-left: 5px solid var(--color-accent); /* Accent color left border */
 }
 
-@media (prefers-color-scheme: dark) {
-    .testimonial-item {
-        background-color: #1a1a1a; /* Darker background in dark mode */
-        color: var(--color-text-dark);
-         box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    }
-     .testimonial-item .client-info {
-         color: #bbb; /* Adjust for dark mode readability */
-     }
-}
+
 
 .testimonial-item .quote::before,
 .testimonial-item .quote::after {
-    content: '"'; /* Add quotes */
-    font-size: 1.5em;
-    color: var(--color-accent); /* Accent color for quotes */
+    content: '"';
+    font-size: 1.8em;
+    color: var(--color-primary); /* Primary blue for quotes */
     line-height: 0;
+    vertical-align: -0.3em;
 }
 
 .testimonial-item .quote::before {
@@ -553,30 +591,33 @@ section {
 
 
 .testimonial-item .client-info {
-    margin-top: 15px;
-    font-style: normal; /* Reset italic for name/title */
+    margin-top: 20px;
+    font-style: normal;
     font-weight: bold;
     color: #555;
 }
 
 
-/* Call to Action (CTA) Section */
+/* Call to Action (CTA) Section - Can keep primary blue background for prominence */
 .cta {
-    background-color: var(--color-primary); /* Example: Primary color background */
+    background-color: var(--color-primary);
     color: var(--color-text-light);
     text-align: center;
-    padding: 80px 0; /* More vertical padding to make it prominent */
+    padding: 100px 0;
 }
 
 .cta h2 {
-    color: var(--color-text-light); /* Ensure heading is light */
-    margin-bottom: 15px;
-    font-size: 2em;
+    color: var(--color-text-light); /* White heading */
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .cta p {
-    font-size: 1.1em;
-    margin-bottom: 30px;
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    line-height: 1.5;
 }
 
 .cta .cta-button {
@@ -584,51 +625,79 @@ section {
 }
 
 
-/* Footer */
+/* Footer - Can keep dark for contrast, or use a dark blue */
 .footer {
-    background-color: var(--color-background-dark); /* Example: Dark background */
+    background-color: var(--color-background-dark); /* Dark background */
     color: var(--color-text-light);
-    padding: 40px 0 20px; /* Top, horizontal, bottom padding */
+    padding: 60px 0 30px;
 }
 
 .footer a {
-    color: var(--color-text-light); /* Footer links are light */
+    color: var(--color-text-light); /* Footer links are white */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer a:hover {
-    color: var(--color-accent); /* Accent color on hover */
+    color: var(--color-primary); /* Primary blue on hover */
 }
 
 .footer .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
-    gap: 30px;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
 }
 
 /* Adjust layout for small screens */
-/* Add media query here */
 @media (max-width: 500px) {
     .footer .footer-content {
-        grid-template-columns: 1fr; /* Stack columns on very small screens */
+        grid-template-columns: 1fr;
         text-align: center;
     }
     .footer .footer-links ul {
         padding: 0;
     }
     .footer .footer-links li {
-         margin: 5px 0;
+         margin: 8px 0;
     }
+     .footer-social {
+         text-align: center;
+     }
 }
 
 
 .footer-brand .logo {
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    color: var(--color-primary); /* Logo text in primary blue */
 }
+/* If using the logo image */
+.footer-brand img {
+     height: 50px;
+     width: auto;
+     margin-bottom: 15px;
+}
+
+
+.footer-brand p {
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8); /* Slightly lighter white text */
+}
+
+.footer-links h3,
+.footer-contact h3,
+.footer-social h3 {
+     color: var(--color-primary); /* Footer headings in primary blue */
+     margin-bottom: 20px;
+     font-size: 1.2em;
+     text-transform: uppercase;
+     font-weight: bold;
+}
+
 
 .footer-links ul {
     list-style: none;
@@ -637,24 +706,35 @@ section {
 }
 
 .footer-links li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .footer-contact p {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-size: 1em;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .footer-social a {
-    display: inline-block; /* Allow margin */
-    margin-right: 15px;
-    font-size: 1.5em; /* Adjust icon size if using icons */
-    /* Add styles for actual social icons if used */
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 2em;
+    color: var(--color-text-light); /* White icons */
 }
+.footer-social a:last-child {
+    margin-right: 0;
+}
+
+.footer-social a:hover {
+    color: var(--color-primary); /* Primary blue on hover */
+}
+
 
 .footer-bottom {
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator line */
-    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 25px;
     font-size: 0.9em;
-    color: rgba(255, 255, 255, 0.6); /* Lighter color for copyright text */
+    color: rgba(255, 255, 255, 0.6);
 }
