@@ -1,0 +1,660 @@
+/*
+  Base Styles (from your initial CSS)
+  ------------------------------------
+*/
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6; /* Adjusted slightly for readability */
+  font-weight: 400;
+
+  /*
+    Color Palette Option 1: Professional/Techy Blues (Uncomment and use one option)
+    ------------------------------------------------------------------------------
+  */
+  --color-primary: #0077CC;       /* Main Brand Blue */
+  --color-accent: #00C1B0;        /* Secondary/Accent Color */
+  --color-text-dark: #333333;     /* Dark text for light backgrounds */
+  --color-text-light: #FFFFFF;    /* Light text for dark backgrounds */
+  --color-background-dark: #333333; /* Dark section background */
+  --color-background-light: #F4F4F4; /* Light section background */
+  --color-link: #646cff;          /* Default link color */
+  --color-link-hover: #535bf2;    /* Default link hover color */
+
+  /*
+    Color Palette Option 2: Modern/Clean Navy (Uncomment and use one option)
+    ------------------------------------------------------------------------
+  */
+  /*
+  --color-primary: #0A192F;
+  --color-accent: #FFA500;
+  --color-text-dark: #333333;
+  --color-text-light: #FFFFFF;
+  --color-background-dark: #0A192F;
+  --color-background-light: #E0E0E0;
+  --color-link: #646cff;
+  --color-link-hover: #535bf2;
+  */
+
+
+  /* Apply default colors */
+  color: var(--color-text-dark);
+  background-color: var(--color-background-light);
+
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: rgba(255, 255, 255, 0.87); /* Keep default dark mode text color */
+    background-color: #242424;      /* Keep default dark mode background */
+
+    /* Adjust variable usage for dark mode if needed */
+    --color-text-dark: rgba(255, 255, 255, 0.87); /* Dark text is light in dark mode */
+    --color-text-light: #242424;    /* Light text is dark in dark mode */
+    --color-background-dark: #1a1a1a; /* Use a darker background for dark sections in dark mode */
+    --color-background-light: #242424; /* Use the general background for light sections */
+
+    /* Link colors might need adjustment */
+    --color-link: #646cff;
+    --color-link-hover: #747bff;
+  }
+}
+
+
+body {
+  margin: 0;
+  /* Remove default flex/center from body for section stacking */
+  /* display: flex; */
+  /* place-items: center; */
+  min-width: 320px;
+  /* min-height: 100vh; */ /* Remove this if sections are taller than viewport */
+  overflow-x: hidden; /* Prevent horizontal scroll caused by padding/margins sometimes */
+  line-height: 1.6; /* Ensure body text uses the correct line height */
+  -webkit-font-smoothing: antialiased; /* Ensure antialiasing is applied */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2; /* Tighter line height for headings */
+    margin-top: 0; /* Remove default top margin */
+    margin-bottom: 0.5em; /* Add bottom margin */
+    color: var(--color-text-dark); /* Default heading color */
+}
+
+h1 { font-size: 3.2em; }
+
+
+a {
+  font-weight: 500;
+  color: var(--color-link);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--color-link-hover);
+}
+
+/* Reset default button styles */
+button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+}
+
+
+/*
+  Utility Classes
+  ------------------------------------
+*/
+.container {
+  max-width: 1200px; /* Or your preferred max width */
+  margin: 0 auto; /* Center the container */
+  padding: 0 20px; /* Add horizontal padding */
+}
+
+/* Basic vertical padding for all sections */
+section {
+    padding: 60px 0;
+}
+
+/* Alternating section background colors (example) */
+/* Apply these classes to your <section> elements */
+.section-light {
+    background-color: var(--color-background-light);
+    color: var(--color-text-dark);
+}
+
+.section-dark {
+    background-color: var(--color-background-dark);
+    color: var(--color-text-light);
+}
+/* Ensure headings in dark sections are light */
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4,
+.section-dark h5,
+.section-dark h6 {
+    color: var(--color-text-light);
+}
+
+
+/*
+  Button Styles (using .cta-button class on links or buttons)
+  -------------------------------------------------------------
+*/
+.cta-button {
+  border-radius: 8px;
+  border: none; /* Use background/padding instead of border */
+  padding: 0.8em 1.5em; /* Slightly more padding */
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.25s ease, opacity 0.25s ease, border-color 0.25s ease, color 0.25s ease; /* Smooth transitions for all relevant properties */
+  text-decoration: none; /* Remove underline from cta-button links */
+  display: inline-block; /* Allows padding and margin */
+  margin: 5px; /* Add a small margin between buttons */
+}
+
+/* Primary button style */
+.cta-button.primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+}
+
+.cta-button.primary:hover {
+  /* Simple hover effect - consider using HSL for easier darkening/lightening if not using preprocessor */
+  opacity: 0.9;
+}
+
+/* Secondary button style */
+.cta-button.secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+}
+
+.cta-button.secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+
+
+/* Header */
+.header {
+    background-color: rgba(255, 255, 255, 0.95); /* Example semi-transparent white */
+    padding: 5px 0;
+    position: sticky; /* Make it sticky */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure it's above other content */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional subtle shadow */
+}
+
+/* Adjust for dark mode */
+@media (prefers-color-scheme: dark) {
+    .header {
+        background-color: rgba(36, 36, 36, 0.95);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+}
+
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .logo a {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--color-text-dark); /* Logo color */
+    text-decoration: none;
+}
+
+.header .nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.header .nav li {
+    margin-left: 20px;
+}
+
+.header .nav a {
+    color: var(--color-text-dark); /* Nav link color */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.header .nav a:hover {
+    color: var(--color-primary); /* Nav link hover color */
+}
+
+/* Hide nav on small screens and show a hamburger icon if needed */
+/* Add media query here */
+@media (max-width: 768px) {
+    .header .nav {
+        display: none; /* Hide nav by default on small screens */
+    }
+    /* Add styles for a hamburger menu icon here */
+}
+
+
+/* Hero Section */
+.hero {
+    background: url('/images/hero-background.jpg') center center/cover no-repeat; /* Replace with your image */
+    color: var(--color-text-light); /* Hero text color should contrast background */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    min-height: 100vh; /* Make hero cover the full viewport height */
+    position: relative; /* Needed for overlay */
+}
+
+/* Optional: Add an overlay for better text readability */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 1; /* Below content */
+}
+
+.hero .container {
+    position: relative; /* Bring container content above overlay */
+    z-index: 2;
+}
+
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: var(--color-text-light); /* Ensure heading is light */
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.hero-buttons .cta-button {
+    margin: 10px; /* Space between buttons */
+}
+
+/* Adjust font sizes and padding for small screens */
+/* Add media query here */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2em;
+    }
+    .hero p {
+        font-size: 1em;
+    }
+    .hero {
+        min-height: 80vh; /* Shorter height on small screens */
+    }
+}
+
+
+/* Services Section */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 30px; /* Space between grid items */
+    margin-top: 40px;
+}
+
+.service-item {
+    background-color: #fff; /* White background for service cards */
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+    .service-item {
+        background-color: #1a1a1a; /* Darker background in dark mode */
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+}
+
+.service-item:hover {
+    transform: translateY(-10px); /* Lift card on hover */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.service-icon {
+    font-size: 3em; /* Adjust icon size */
+    margin-bottom: 15px;
+    color: var(--color-primary); /* Icon color */
+}
+
+.service-item h3 {
+    margin-bottom: 10px;
+}
+
+
+/* Portfolio Section */
+.portfolio {
+    background-color: var(--color-background-dark); /* Example: Dark background for portfolio */
+    color: var(--color-text-light);
+}
+
+.portfolio h2 {
+    color: var(--color-text-light); /* Ensure heading is light */
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 30px;
+}
+
+.project-item {
+    background-color: var(--color-text-light); /* White background for project cards */
+    border-radius: 8px;
+    overflow: hidden; /* Hide parts of image outside border-radius */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Use flex to structure image and info */
+    flex-direction: column;
+}
+@media (prefers-color-scheme: dark) {
+    .project-item {
+         background-color: #1a1a1a; /* Darker background in dark mode */
+         box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+     .project-item .project-info h3,
+     .project-item .project-info p {
+         color: var(--color-text-dark); /* Ensure text in info is readable on dark background */
+     }
+}
+
+
+.project-item:hover {
+     transform: translateY(-10px); /* Lift card on hover */
+     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+
+.project-item img {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency, adjust as needed */
+    object-fit: cover; /* Cover the area without distorting aspect ratio */
+}
+
+.project-item .project-info {
+    padding: 20px;
+    flex-grow: 1; /* Allow info to take up remaining space */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-item .project-info h3 {
+    margin-bottom: 5px;
+    color: var(--color-text-dark); /* Project title color */
+}
+
+.project-item .project-info p {
+    font-size: 0.95em;
+    color: #555; /* Slightly lighter text for description */
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allow description to push 'Ver más' down */
+}
+
+@media (prefers-color-scheme: dark) {
+    .project-item .project-info p {
+        color: #bbb; /* Adjust for dark mode readability */
+    }
+}
+
+.project-item .project-info a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: bold;
+    align-self: flex-start; /* Align link to the left */
+}
+
+
+/* About Us Section */
+.about-content {
+    display: flex;
+    gap: 40px; /* Space between text and image */
+    align-items: center; /* Vertically align items */
+}
+
+/* Adjust layout for small screens */
+/* Add media query here */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column; /* Stack items vertically */
+    }
+    .about-image {
+        width: 100%; /* Image takes full width */
+        max-width: 400px; /* Limit max width */
+    }
+}
+
+
+.about-text {
+    flex: 1; /* Allow text to take up available space */
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Optional: rounded corners for image */
+}
+
+
+/* Process Section */
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid for steps */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.step-item {
+    text-align: center;
+    padding: 20px;
+    /* Optional: Add a subtle border or background */
+    /* border: 1px solid #eee; */
+    /* background-color: #fff; */
+    border-radius: 8px;
+}
+/* Adjust for dark mode if background is added */
+
+
+.step-icon {
+    font-size: 2.5em; /* Adjust icon size */
+    margin-bottom: 10px;
+    color: var(--color-accent); /* Use accent color for icons */
+}
+
+.step-item h3 {
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+
+/* Testimonials Section */
+.testimonials {
+    background-color: var(--color-background-dark); /* Example: Dark background */
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+.testimonials h2 {
+    color: var(--color-text-light); /* Ensure heading is light */
+    margin-bottom: 40px;
+}
+
+.testimonials-list {
+    /* Styles for your slider or grid */
+    display: grid; /* Simple grid for example */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.testimonial-item {
+    background-color: #fff; /* White background for testimonial cards */
+    color: var(--color-text-dark);
+    padding: 30px;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    font-style: italic;
+}
+
+@media (prefers-color-scheme: dark) {
+    .testimonial-item {
+        background-color: #1a1a1a; /* Darker background in dark mode */
+        color: var(--color-text-dark);
+         box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+     .testimonial-item .client-info {
+         color: #bbb; /* Adjust for dark mode readability */
+     }
+}
+
+.testimonial-item .quote::before,
+.testimonial-item .quote::after {
+    content: '"'; /* Add quotes */
+    font-size: 1.5em;
+    color: var(--color-accent); /* Accent color for quotes */
+    line-height: 0;
+}
+
+.testimonial-item .quote::before {
+    margin-right: 5px;
+}
+.testimonial-item .quote::after {
+    margin-left: 5px;
+}
+
+
+.testimonial-item .client-info {
+    margin-top: 15px;
+    font-style: normal; /* Reset italic for name/title */
+    font-weight: bold;
+    color: #555;
+}
+
+
+/* Call to Action (CTA) Section */
+.cta {
+    background-color: var(--color-primary); /* Example: Primary color background */
+    color: var(--color-text-light);
+    text-align: center;
+    padding: 80px 0; /* More vertical padding to make it prominent */
+}
+
+.cta h2 {
+    color: var(--color-text-light); /* Ensure heading is light */
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+.cta p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.cta .cta-button {
+    /* Inherits general cta-button styles */
+}
+
+
+/* Footer */
+.footer {
+    background-color: var(--color-background-dark); /* Example: Dark background */
+    color: var(--color-text-light);
+    padding: 40px 0 20px; /* Top, horizontal, bottom padding */
+}
+
+.footer a {
+    color: var(--color-text-light); /* Footer links are light */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--color-accent); /* Accent color on hover */
+}
+
+.footer .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* Adjust layout for small screens */
+/* Add media query here */
+@media (max-width: 500px) {
+    .footer .footer-content {
+        grid-template-columns: 1fr; /* Stack columns on very small screens */
+        text-align: center;
+    }
+    .footer .footer-links ul {
+        padding: 0;
+    }
+    .footer .footer-links li {
+         margin: 5px 0;
+    }
+}
+
+
+.footer-brand .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-contact p {
+    margin-bottom: 10px;
+}
+
+.footer-social a {
+    display: inline-block; /* Allow margin */
+    margin-right: 15px;
+    font-size: 1.5em; /* Adjust icon size if using icons */
+    /* Add styles for actual social icons if used */
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator line */
+    padding-top: 20px;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.6); /* Lighter color for copyright text */
+}
