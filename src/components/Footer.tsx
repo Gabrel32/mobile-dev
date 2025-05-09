@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import img from "../assets/logo.png"
 
 const Footer: React.FC = () => {
   return (
@@ -7,7 +8,6 @@ const Footer: React.FC = () => {
         <div className="footer-content">
           <div className="footer-brand">
             {/* Your Logo */}
-            <div className="logo">Your Logo</div>
             <p>Empresa de desarrollo móvil dedicada a crear soluciones innovadoras.</p>
           </div>
           <div className="footer-links">
@@ -20,9 +20,9 @@ const Footer: React.FC = () => {
           </div>
           <div className="footer-contact">
             <h3>Contacto</h3>
-            <p>Email: <a href="mailto:info@yourcompany.com">info@yourcompany.com</a></p>
-            <p>Teléfono: <a href="tel:+123456789">+123 456 789</a></p>
-            <p>Dirección: Tu Dirección Aquí</p>
+            <p>Email: <a href="mailto:info@yourcompany.com">Mobile_Dev@gmail.com</a></p>
+            <p>Teléfono: <a href="tel:+123456789">+58 424589637</a></p>
+            <p>Dirección: Silcon valey </p>
           </div>
           <div className="footer-social">
             <h3>Síguenos</h3>
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Your Company Name. Todos los derechos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} Mobile dev. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

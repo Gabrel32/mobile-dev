@@ -8,8 +8,8 @@ interface Testimonial {
 }
 
 const testimonials: Testimonial[] = [
-  { quote: '"[Quote 1]"', name: 'Nombre Cliente 1', title: 'CEO', company: 'Empresa X' },
-  { quote: '"[Quote 2]"', name: 'Nombre Cliente 2', title: 'Fundador', company: 'Empresa Y' },
+  { quote: 'Me encanto trabajar con esta compania fue un proceso muy ameno', name: 'Ramon antonio', title: 'CEO', company: 'manOS' },
+  { quote: 'Fueron de gra ayuda para el diseño de la mejor obra que e creado', name: 'kentaro miura', title: 'Fundador', company: 'BlackRock' },
   // Add more testimonials
 ];
 

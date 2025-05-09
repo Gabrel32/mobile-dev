@@ -1,5 +1,6 @@
 import React from 'react';
-
+import img_1 from "../assets/diseno-apps-movil.jpg"
+import img_2 from "../assets/2.png"
 interface Project {
   image: string; // Path to project image
   title: string;
@@ -8,8 +9,8 @@ interface Project {
 }
 
 const projects: Project[] = [
-  { image: '/images/project1.jpg', title: 'App de E-commerce', description: 'Plataforma móvil para compras online.' },
-  { image: '/images/project2.jpg', title: 'App de Gestión', description: 'Solución B2B para optimizar procesos internos.' },
+  { image: img_1, title: 'App de E-commerce', description: 'Plataforma móvil para compras online.' },
+  { image: img_2, title: 'App de Gestión', description: 'Solución B2B para optimizar procesos internos.' },
   // Add more projects
 ];
 
@@ -25,7 +26,7 @@ const Portfolio: React.FC = () => {
               <div className="project-info">
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
-                {project.link && <a href={project.link}>Ver más</a>}
+                {project.link && <a href={`${project.link}`}>Ver más</a>}
               </div>
             </div>
           ))}
