@@ -19,16 +19,18 @@ const Footer: React.FC = () => {
           </div>
           <div className="footer-contact">
             <h3>Contacto</h3>
-            <p>Email: <a href="mailto:info@yourcompany.com">Mobile_Dev@gmail.com</a></p>
-            <p>Teléfono: <a href="tel:+123456789">+58 424589637</a></p>
-            <p>Dirección: Silcon valey </p>
+            <p>Email: <a href="mailto:Mobiledev568@gmail.com">Mobiledev568@gmail.com</a></p>
+            <p>Alternativo: <a href="mailto:estudiosmobiledev@gmail.com">estudiosmobiledev@gmail.com</a></p>
+            <p>Teléfono: <a href="tel:+584241658236">+58 424-1658236</a></p>
+            <p>Dirección: Silicon Valley</p>
           </div>
           <div className="footer-social">
             <h3>Síguenos</h3>
-            {/* Add social media icons/links */}
-            <a href="#" aria-label="LinkedIn">LinkedIn</a>
-            <a href="#" aria-label="GitHub">GitHub</a>
-            {/* Add more social links */}
+            <div className="social-links">
+              <a href="https://www.facebook.com/profile.php?id=61575848322137&sk=about" aria-label="Facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a href="https://www.instagram.com/mobile_dev110/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="https://x.com/StudioMobileDev" aria-label="Twitter" target="_blank" rel="noopener noreferrer">Twitter/X</a>
+            </div>
           </div>
         </div>
         <div className="footer-bottom">
